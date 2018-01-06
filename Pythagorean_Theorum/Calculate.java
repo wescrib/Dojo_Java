@@ -13,7 +13,7 @@ public class Calculate {
 
 		Pythagorean test = new Pythagorean();
 			double hypotenuse = test.getHypotenuse(legA,legB);
-			System.out.println(hypotenuse);
+			System.out.println("The hypotenuse is approximately equal to " + hypotenuse);
 
 	}
 
