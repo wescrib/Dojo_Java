@@ -1,0 +1,49 @@
+* {
+    margin: auto;
+}
+
+body {
+    background-color: rgb(66, 201, 255)
+}
+
+.header {
+    width: 1000px;
+    text-align: center;
+
+}
+
+.content {
+    width: 1000px;
+    background-color: rgb(0, 111, 214);
+    display: inline-flex;
+    margin-top: 200px;
+    margin-left: 450px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.about {
+    width: 250px;
+    text-align: center;
+}
+
+.about p {
+    border: 1px solid;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: blue;
+}
+
+.projects {
+    width: 250px;
+    text-align: center;
+}
+
+.projects p {
+    border: 1px solid;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: blue;
+}
