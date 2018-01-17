@@ -1,0 +1,58 @@
+package com.project.DojoSurvey.controllers;
+
+import java.security.Principal;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+@Controller
+@RequestMapping("/*") // Wildcard all routes.
+public class Router{
+	public Router(){
+
+	}
+
+	@RequestMapping(path="/")
+	public String index(){
+		return "index";
+	}
+
+	@RequestMapping("/success")
+	public String success(){
+		return "success";
+	}
+
+	@PostMapping(path="/submit")
+	public String submit(
+	@RequestParam(value="name") String name,
+	@RequestParam(value="make") String make,
+	@RequestParam(value="transmission") String transmission,
+	HttpSession session
+
+	){
+		session.setAttribute("name", name);
+		session.setAttribute("make", make);
+		session.setAttribute("transmission", transmission);
+	return "redirect:/success";
+	}
+
+	@RequestMapping("")
+	public String redirect(HttpServletRequest req){		
+		String url = req.getRequestURI().toString();
+		return "redirect:/index";
+	}		
+}
