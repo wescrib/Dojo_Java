@@ -43,13 +43,6 @@
 				<p style="color: red"><form:errors path="confirm"></form:errors></p>
 			</form:label>
 		</p>
-
-		<p>
-			<form:label path="admin">Admin Account??
-				<form:input path="admin" type="text"></form:input>
-				<p style="color: red"><form:errors path="admin"></form:errors></p>
-			</form:label>
-		</p>
 			<input type="submit" value="Submit">
 		</form:form>
 		<h1>LOGIN</h1>

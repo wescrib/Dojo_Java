@@ -17,6 +17,7 @@
 	<body>
 		<h1>EDIT</h1>
 		<p>${user.firstName} ${user.lastName}</p>
+		<p>${user.password}</p>
 		<form action="${user.id}/update" method="post">
 			<p>First Name: <input type="text" name="firstName" value="${user.firstName}"></p>
 			<p>Last Name: <input type="text" name="lastName" value="${user.lastName}"></p>

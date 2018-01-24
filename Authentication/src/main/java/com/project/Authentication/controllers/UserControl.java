@@ -22,13 +22,17 @@ import com.project.Authentication.models.UserModel;
 import com.project.Authentication.repositories.*;
 import com.project.Authentication.services.UserService;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Controller
 public class UserControl{
 	//Member variables go here
 	private UserService userService;
+	private BCryptPasswordEncoder bcrypt;
 
 	public UserControl(UserService userService){
 		this.userService = userService;
+		this.bcrypt = new BCryptPasswordEncoder();
 
 	}
 
@@ -96,7 +100,7 @@ public class UserControl{
 			userService.create(user);
 			session.setAttribute("current_user", user);
 		
-			return "redirect:/";
+			return "redirect:/dashboard";
 		}
 	}
 	
@@ -121,6 +125,7 @@ public class UserControl{
 		if(session.getAttribute("current_user")!=null && loggedInUser.isAdmin()){
 			UserModel user = userService.findById(id);
 			model.addAttribute("user", user);
+			System.out.println(user.getPassword());
 			return "edit";
 		}else{
 			return "redirect:/errorPage";
@@ -149,19 +154,22 @@ public class UserControl{
 }
 	@PostMapping("/edit/{id}/update")
 	public String update(
-		@PathVariable("id") long id, 
-		UserModel user, 
+		@PathVariable("id") long id,
 		@RequestParam("firstName") String firstName, 
 		@RequestParam("lastName") String lastName, 
 		@RequestParam("email")String email,
 		@RequestParam("admin") boolean admin
-		
 		){
-		System.out.println(firstName);
+		UserModel user = userService.findById(id);
+		System.out.println(user.getPassword());
 		user.setAdmin(admin);
 		user.setEmail(email);
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
+		// String password = user.getPassword();
+		System.out.println("BEFORE PASSWORD");
+		user.setPassword(user.getPassword());
+		System.out.println("AFTER PASSWORD");
 		userService.update(user);
 		return "redirect:/adminDash";
 	}
