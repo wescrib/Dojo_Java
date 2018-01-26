@@ -32,6 +32,7 @@
 						<td><a href="/questions/ask/display/${question.id}">${question.question}</a></td>
 						
 						<td>
+							<!-- GETTER BEING USED HERE IN THE JSP. DISPLAY QUESTION JSP GETTER IS NOT BEING USED -->
 							<c:forEach items="${question.getTag()}" var="tag">
 								${tag.subject},
 							</c:forEach>

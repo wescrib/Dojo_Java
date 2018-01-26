@@ -15,19 +15,20 @@
 	</head>
 
 	<body>
-		<a href="logout">Logout</a>
+		<a href="logout">Logout</a> <!-- THIS LOGOUT BUTTON ISNT WORKING FOR SOME REASON-->
 		<h1>${question.question}</h1>
 		<h2>Tags: <c:forEach items="${question.getTag()}" var="tag">
 			${tag.subject},
 		</c:forEach></h2>
 		<br>
-		<form:form action="${question.id}" method="post" modelAttribute="a">
+		<form:form action="${question.id}" method="post" modelAttribute="a"> <!-- MODEL ATTRIBUTE IS TALKING TO @MODEL ATTRIBUTE IN CONTROLLER -->
 			<form:label path="answer">Answer
 			<form:input path="answer"/>
 			<form:errors path="answer"/>
 			</form:label>
 			<input type="submit" value="ANSWWWWER">
 		</form:form>
+		<!-- NO GETTERS BEING USED BELOW -->
 		<c:forEach items="${answers}" var="answer">
 			<h1>${answer.answer}</h1>
 		</c:forEach>
